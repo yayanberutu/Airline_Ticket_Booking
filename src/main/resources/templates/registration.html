@@ -25,9 +25,9 @@
     <div class="card-body register-card-body">
       <p class="login-box-msg">Daftar Akun Baru</p>
 
-      <form action="#" method="post">
+      <form action="#" th:action="@{/registration}" th:object="${user}" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username">
+          <input type="text" class="form-control" placeholder="Username" th:field="*{username}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="text" class="form-control" placeholder="Nama Lengkap" th:field="*{fullname}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -43,7 +43,10 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <select class="form-control" name="dropRole" id="dropRole" th:field="*{roleid}">
+          <option value="0"> Select Role</option>
+			<option th:each="role : ${roles}" th:value="${role.roleid}" th:text="${role.roledesc}"></option>
+          </select>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -51,13 +54,14 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Retype password">
+          <input type="password" class="form-control" th:field="*{pwd}" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
+        
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">

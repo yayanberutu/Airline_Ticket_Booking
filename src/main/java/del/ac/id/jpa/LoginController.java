@@ -2,9 +2,12 @@ package del.ac.id.jpa;
 
 import java.util.List;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import del.ac.id.jpa.model.Role;
 import del.ac.id.jpa.model.User;
@@ -47,7 +50,18 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("login");
 		return mv;
 	}
+	
+	@GetMapping("/logout")
+		public RedirectView logout() {
 
+			return new RedirectView("login");
+		}
+	
+	@RequestMapping("/login")
+	public ModelAndView Signin(@ModelAttribute User user, BindingResult bindingResult) {
+		
+	}
+	
 
 
 }
