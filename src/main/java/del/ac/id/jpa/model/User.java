@@ -17,11 +17,23 @@ public class User {
 		@Column(name="id_role")
 		private int roleid;
 		
+		@Column(name="fullname")
+		private String fullname;
+		
 		public User() {}
-		public User(String username, String pwd, int roleid) {
+		public User(String username, String pwd, int roleid, String fullname) {
 				this.username = username;
 				this.pwd = pwd;
 				this.roleid = roleid;
+				this.fullname = fullname;
+		}
+		
+		
+		public String getFullname() {
+			return fullname;
+		}
+		public void setFullname(String fullname) {
+			this.fullname = fullname;
 		}
 		public void setUsername(String username) {
 			this.username = username;

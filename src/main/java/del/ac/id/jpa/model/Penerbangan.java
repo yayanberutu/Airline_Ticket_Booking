@@ -41,11 +41,11 @@ public class Penerbangan {
 	@Column
 	private int status;
 	
-	
+	public Penerbangan() {
+		
+	}
 
-	public Penerbangan(int id_penerbangan, int id_pesawat, String asal, String tujuan, int tersedia_ekonomi,
-			int tersedia_bisnis, String created_by, String updated_by, Date created_at, Date updated_at, int status) {
-		super();
+	public Penerbangan(int id_penerbangan, int id_pesawat, String asal, String tujuan, int tersedia_ekonomi, int tersedia_bisnis, String created_by, String updated_by, Date created_at, Date updated_at, int status) {
 		this.id_penerbangan = id_penerbangan;
 		this.id_pesawat = id_pesawat;
 		this.asal = asal;

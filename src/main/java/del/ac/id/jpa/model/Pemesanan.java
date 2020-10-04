@@ -30,6 +30,10 @@ public class Pemesanan {
 	@Column
 	private Date created_at;
 	private Date updated_at;
+	public Pemesanan() {
+		
+	}
+	
 	public Pemesanan(int id_pemesanan, int id_user, int id_penerbangan, String email, String telepon, int status,
 			Date created_at, Date updated_at) {
 		super();

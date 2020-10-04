@@ -1,5 +1,9 @@
 package del.ac.id.jpa;
 
+import del.ac.id.jpa.model.*;
+
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -42,22 +46,27 @@ public class AdminController {
 	@GetMapping("/Admin/Pemesanan")
 	public ModelAndView pemesanan() {
 		ModelAndView mv = new ModelAndView("Admin/pemesanan");
+		mv.addObject("pesanan", pemesananRepository.findAll());
 		return mv;
 	}
 	@GetMapping("/Admin/User")
 	public ModelAndView user() {
 		ModelAndView mv = new ModelAndView("Admin/user");
+		mv.addObject("user", userRepository.findAll());
 		return mv;
 	}
 	@GetMapping("/Admin/Pesawat")
 	public ModelAndView pesawat() {
 		ModelAndView mv = new ModelAndView("Admin/pesawat");
+		mv.addObject("pesawat", pesawatRepository.findAll());
 		return mv;
 	}
 	
 	@GetMapping("/Admin/Penerbangan")
 	public ModelAndView penerbangan() {
+		List<Penerbangan> listPenerbangan = penerbanganRepository.findAll();
 		ModelAndView mv = new ModelAndView("Admin/penerbangan");
+		mv.addObject("list", listPenerbangan);
 		return mv;
 	}
 	

@@ -24,7 +24,7 @@ public class Pesawat {
 	private int kapasitas_ekonomi;
 	
 	@Column
-	private int kapasista_bisnis;
+	private int kapasitas_bisnis;
 	
 	@Column
 	private int created_by;
@@ -39,15 +39,17 @@ public class Pesawat {
 	private Date updated_at;
 	
 	
-
+	public Pesawat() {
+		
+	}
 	public Pesawat(int id_pesawat, String nama_pesawat, String jenis_pesawat, int kapasitas_ekonomi,
-			int kapasista_bisnis, int created_by, int updated_by, Date created_at, Date updated_at) {
+			int kapasitas_bisnis, int created_by, int updated_by, Date created_at, Date updated_at) {
 		super();
 		this.id_pesawat = id_pesawat;
 		this.nama_pesawat = nama_pesawat;
 		this.jenis_pesawat = jenis_pesawat;
 		this.kapasitas_ekonomi = kapasitas_ekonomi;
-		this.kapasista_bisnis = kapasista_bisnis;
+		this.kapasitas_bisnis = kapasitas_bisnis;
 		this.created_by = created_by;
 		this.updated_by = updated_by;
 		this.created_at = created_at;
@@ -86,12 +88,12 @@ public class Pesawat {
 		this.kapasitas_ekonomi = kapasitas_ekonomi;
 	}
 
-	public int getKapasista_bisnis() {
-		return kapasista_bisnis;
+	public int getKapasitas_bisnis() {
+		return kapasitas_bisnis;
 	}
 
-	public void setKapasista_bisnis(int kapasista_bisnis) {
-		this.kapasista_bisnis = kapasista_bisnis;
+	public void setKapasitas_bisnis(int kapasista_bisnis) {
+		this.kapasitas_bisnis = kapasista_bisnis;
 	}
 
 	public int getCreated_by() {
