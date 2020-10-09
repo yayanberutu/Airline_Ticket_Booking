@@ -57,11 +57,5 @@ public class LoginController {
 			return new RedirectView("login");
 		}
 	
-	@RequestMapping("/login")
-	public ModelAndView Signin(@ModelAttribute User user, BindingResult bindingResult) {
-		
-	}
-	
-
 
 }

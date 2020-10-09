@@ -3,6 +3,7 @@ package del.ac.id.jpa.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,14 +22,16 @@ public class User {
 		private String fullname;
 		
 		public User() {}
+
+		
 		public User(String username, String pwd, int roleid, String fullname) {
-				this.username = username;
-				this.pwd = pwd;
-				this.roleid = roleid;
-				this.fullname = fullname;
+			this.username = username;
+			this.pwd = pwd;
+			this.roleid = roleid;
+			this.fullname = fullname;
+
 		}
-		
-		
+
 		public String getFullname() {
 			return fullname;
 		}

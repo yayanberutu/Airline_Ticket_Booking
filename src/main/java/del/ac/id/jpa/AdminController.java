@@ -5,8 +5,11 @@ import del.ac.id.jpa.model.*;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import del.ac.id.jpa.repository.LoginRepository;
 import del.ac.id.jpa.repository.PemesananRepository;
@@ -55,6 +58,15 @@ public class AdminController {
 		mv.addObject("user", userRepository.findAll());
 		return mv;
 	}
+	
+	@GetMapping("Admin/User/Delete/{username}")
+	@ResponseBody
+	public RedirectView delete_user(@PathVariable String username) {
+		userRepository.deleteById(username);
+		return new RedirectView("/Admin/User");
+	}
+	
+	
 	@GetMapping("/Admin/Pesawat")
 	public ModelAndView pesawat() {
 		ModelAndView mv = new ModelAndView("Admin/pesawat");

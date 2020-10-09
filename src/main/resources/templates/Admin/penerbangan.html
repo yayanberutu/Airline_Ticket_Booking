@@ -168,6 +168,9 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+              <div>
+              	<a th:href="@{'/Penerbangan/Form'}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Tambahkan Penerbangan</a>
+              </div>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -180,13 +183,12 @@
                   </thead>
                   <tbody>
                   <tr th:each="ls : ${list}">
-                    <td th:text="${ls.id_penerbangan}"></td>
-                    <td th:text="${ls.asal}">
-                    </td>
+                    <td th:text="${ls.id_pesawat}"></td>
+                    <td th:text="${ls.asal}"></td>
                     <td th:text="${ls.tujuan}"></td>
-                    <td>5 Oktober 2020 15:00</td>
+                    <td th:text="${ls.tanggal}"></td>
                     <td>
-                    	<button type="button" class="btn btn-danger" th:href="@{'/Penerbangan/Delete/' + ${ls.id_penerbangan}}">Hapus</button>
+                    	<button type="button" class="btn btn-danger"><a th:href="@{'/Penerbangan/Delete/' + ${ls.id_penerbangan}}">Hapus </a></button>
                     </td>
                   </tr>
                   </tfoot>
