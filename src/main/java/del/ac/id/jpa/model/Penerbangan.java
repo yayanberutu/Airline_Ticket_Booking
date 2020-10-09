@@ -1,5 +1,7 @@
 package del.ac.id.jpa.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -29,7 +31,10 @@ public class Penerbangan {
 	
 	@Column
 	private int tersedia_bisnis;
-	
+
+	@Column
+	@DateTimeFormat(pattern = "yy-MM-dd'T'hh:mm")
+	private Date waktu_berangkat;
 	@Column
 	private String created_by;
 	private String updated_by;
@@ -45,7 +50,11 @@ public class Penerbangan {
 		
 	}
 
-	public Penerbangan(int id_penerbangan, int id_pesawat, String asal, String tujuan, int tersedia_ekonomi, int tersedia_bisnis, String created_by, String updated_by, Date created_at, Date updated_at, int status) {
+
+
+	public Penerbangan(int id_penerbangan, int id_pesawat, String asal, String tujuan, int tersedia_ekonomi,
+					   int tersedia_bisnis, String created_by, String updated_by, Date created_at,
+					   Date updated_at, int status, Date waktu_berangkat) {
 		this.id_penerbangan = id_penerbangan;
 		this.id_pesawat = id_pesawat;
 		this.asal = asal;
@@ -57,8 +66,15 @@ public class Penerbangan {
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 		this.status = status;
+		this.waktu_berangkat = waktu_berangkat;
+	}
+	public Date getWaktu_berangkat() {
+		return waktu_berangkat;
 	}
 
+	public void setWaktu_berangkat(Date waktu_berangkat) {
+		this.waktu_berangkat = waktu_berangkat;
+	}
 	public int getId_penerbangan() {
 		return id_penerbangan;
 	}

@@ -8,4 +8,5 @@ import del.ac.id.jpa.model.Penerbangan;
 
 public interface PenerbanganRepository extends JpaRepository<Penerbangan, Integer> {
 	List<Penerbangan> findAll();
+	Penerbangan findById(int id);
 }

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" th:href="@{/css/all.min.css}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- icheck bootstrap -->
@@ -18,7 +19,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="#"><b>T*ket</b>Ku</a>
+    <a href="/"><b>T*ket</b>Ku</a>
   </div>
 
   <div class="card">
@@ -39,17 +40,6 @@
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <select class="form-control" name="dropRole" id="dropRole" th:field="*{roleid}">
-          <option value="0"> Select Role</option>
-			<option th:each="role : ${roles}" th:value="${role.roleid}" th:text="${role.roledesc}"></option>
-          </select>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
@@ -81,6 +71,9 @@
 
 
       <a th:href="@{login}" class="text-center">I already have a membership</a>
+      <p class="mb-0">
+        <a href="/" class="text-center">Kembali</a>
+      </p>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
