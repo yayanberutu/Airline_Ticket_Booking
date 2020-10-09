@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -53,6 +55,9 @@ public class PemesananController {
     @GetMapping("/pesan/{id}")
     public ModelAndView Pesan(@PathVariable("id") int id, Model model, HttpSession session){
         Penerbangan penerbangan = penerbanganRepository.findById(id);
+        if(session.getAttribute("user") == null){
+            return new ModelAndView("redirect:/");
+        }
         ModelAndView mv = new ModelAndView("User/pesanan");
         System.out.println(session.getAttribute("user"));
         model.addAttribute("user",session.getAttribute("user"));
@@ -61,10 +66,16 @@ public class PemesananController {
         return mv;
     }
     @PostMapping("/pesananku")
-    public String Pesananku(@ModelAttribute Penerbangan penerbangan, @ModelAttribute("user") User user, @ModelAttribute Pemesanan pemesanan){
+    public ModelAndView Pesananku(@ModelAttribute Penerbangan penerbangan, @ModelAttribute("user") User user, @ModelAttribute Pemesanan pemesanan){
         System.out.println(penerbangan.getId_penerbangan());
         System.out.println(user.getUsername());
         System.out.println(pemesanan.getTelepon()+" "+pemesanan.getEmail());
-        return "hello";
+        pemesanan.setId_penerbangan(penerbangan.getId_penerbangan());
+        pemesanan.setId_user(user.getUsername());
+        pemesanan.setStatus(0);
+        pemesanan.setCreated_at(Date.from(Instant.now()));
+        pemesananRepository.save(pemesanan);
+        return new ModelAndView("redirect:/");
     }
+
 }

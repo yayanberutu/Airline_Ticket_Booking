@@ -69,7 +69,7 @@ public class LoginController {
 	@GetMapping("/logout")
 		public RedirectView logout(HttpSession httpSession) {
 		httpSession.removeAttribute("user");
-			return new RedirectView("login");
+			return new RedirectView("/");
 		}
 	
 	@RequestMapping(value = "/login")

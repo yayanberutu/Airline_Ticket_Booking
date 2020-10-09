@@ -8,6 +8,8 @@
   <link rel="stylesheet" th:href="@{/css/all.min.css}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
   <!-- icheck bootstrap -->
   <link rel="stylesheet" th:href="@{/css/icheck-bootstrap.min.css}">
   <!-- Theme style -->
@@ -167,7 +169,6 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Id User</th>
                     <th>Id Penerbangan</th>
                     <th>Email Pemesan</th>
                     <th>Nomor Telepon</th>
@@ -176,8 +177,7 @@
                   </thead>
                   <tbody>
                   <tr th:each="ls : ${pesanan}">
-                    <td th:text="${ls.id_user}"></td>
-                    <td th:text="${ls.id_penerbangan}">
+                    <td th:text="${ls.id_pemesanan}">
                     </td>
                     <td th:text="${ls.email}"></td>
                     <td th:text="${ls.telepon}"></td>

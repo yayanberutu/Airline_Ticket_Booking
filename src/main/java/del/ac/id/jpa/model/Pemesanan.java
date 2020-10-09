@@ -2,20 +2,18 @@ package del.ac.id.jpa.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="t_pemesanan")
 public class Pemesanan {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private int id_pemesanan;
 	
 	@Column
-	private int id_user;
+	private String username;
 	private int id_penerbangan;
 	
 	@Column(name="email_pemesan")
@@ -34,11 +32,11 @@ public class Pemesanan {
 		
 	}
 	
-	public Pemesanan(int id_pemesanan, int id_user, int id_penerbangan, String email, String telepon, int status,
+	public Pemesanan(int id_pemesanan, String id_user, int id_penerbangan, String email, String telepon, int status,
 			Date created_at, Date updated_at) {
 		super();
 		this.id_pemesanan = id_pemesanan;
-		this.id_user = id_user;
+		this.username = id_user;
 		this.id_penerbangan = id_penerbangan;
 		this.email = email;
 		this.telepon = telepon;
@@ -52,11 +50,11 @@ public class Pemesanan {
 	public void setId_pemesanan(int id_pemesanan) {
 		this.id_pemesanan = id_pemesanan;
 	}
-	public int getId_user() {
-		return id_user;
+	public String getId_user() {
+		return username;
 	}
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
+	public void setId_user(String id_user) {
+		this.username = id_user;
 	}
 	public int getId_penerbangan() {
 		return id_penerbangan;

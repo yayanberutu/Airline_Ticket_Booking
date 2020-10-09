@@ -16,6 +16,8 @@ import del.ac.id.jpa.repository.RoleRepository;
 import del.ac.id.jpa.repository.TiketRepository;
 import del.ac.id.jpa.repository.UserRepository;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class AdminController {
 	private LoginRepository loginRepository;
@@ -39,31 +41,46 @@ public class AdminController {
 	}
 	
 	@GetMapping("/Admin")
-	public ModelAndView admin() {
+	public ModelAndView admin(HttpSession session) {
+		if(session.getAttribute("user") == null){
+			return new ModelAndView("redirect:/");
+		}
 		ModelAndView mv = new ModelAndView("Admin/index");
 		return mv;
 	}
 	@GetMapping("/Admin/Pemesanan")
-	public ModelAndView pemesanan() {
+	public ModelAndView pemesanan(HttpSession session) {
+		if(session.getAttribute("user") == null){
+			return new ModelAndView("redirect:/");
+		}
 		ModelAndView mv = new ModelAndView("Admin/pemesanan");
 		mv.addObject("pesanan", pemesananRepository.findAll());
 		return mv;
 	}
 	@GetMapping("/Admin/User")
-	public ModelAndView user() {
+	public ModelAndView user(HttpSession session) {
+		if(session.getAttribute("user") == null){
+			return new ModelAndView("redirect:/");
+		}
 		ModelAndView mv = new ModelAndView("Admin/user");
 		mv.addObject("user", userRepository.findAll());
 		return mv;
 	}
 	@GetMapping("/Admin/Pesawat")
-	public ModelAndView pesawat() {
+	public ModelAndView pesawat(HttpSession session) {
+		if(session.getAttribute("user") == null){
+			return new ModelAndView("redirect:/");
+		}
 		ModelAndView mv = new ModelAndView("Admin/pesawat");
 		mv.addObject("pesawat", pesawatRepository.findAll());
 		return mv;
 	}
 	
 	@GetMapping("/Admin/Penerbangan")
-	public ModelAndView penerbangan() {
+	public ModelAndView penerbangan(HttpSession session) {
+		if(session.getAttribute("user") == null){
+			return new ModelAndView("redirect:/");
+		}
 		List<Penerbangan> listPenerbangan = penerbanganRepository.findAll();
 		ModelAndView mv = new ModelAndView("Admin/penerbangan");
 		mv.addObject("list", listPenerbangan);

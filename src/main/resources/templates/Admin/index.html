@@ -8,6 +8,8 @@
   <link rel="stylesheet" th:href="@{/css/all.min.css}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
   <!-- icheck bootstrap -->
   <link rel="stylesheet" th:href="@{/css/icheck-bootstrap.min.css}">
   <!-- Theme style -->
@@ -33,16 +35,12 @@
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">MENU</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> PROFIL
-          </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="/logout" class="dropdown-item">
             <i class="fas fa-file mr-2"></i> LOGOUT
           </a>
           <div class="dropdown-divider"></div>
@@ -64,7 +62,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block">Username</a>
+          <p class="d-block" th:text="${session.user.username}"></p>
         </div>
       </div>
 
@@ -137,7 +135,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Selamat Datang, Admin!</h1>
+            <h1>Selamat Datang, <span th:text="${session.user.username}"></span></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
