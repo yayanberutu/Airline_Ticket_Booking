@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,26 +52,19 @@
     </ul>
   </nav>
   <!-- /.navbar -->
+
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
-      <img th:src="@{img/logo}"
-           alt="AdminLTE Logo"
-           class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Tiket Ku</span>
+      <span class="brand-text font-weight-light">ROLE</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
         <div class="info">
-          <a href="#" class="d-block">Yosepri Berutu</a>
+          <a href="#" class="d-block">Username</a>
         </div>
       </div>
 
@@ -149,7 +142,8 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Penerbangan</li>
+              <li class="breadcrumb-item"><a th:href="@{/Admin/Penerbangan}">Penerbangan</a></li>
+              <li class="breadcrumb-item active">Tambah</li>
             </ol>
           </div>
         </div>
@@ -157,50 +151,50 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <!-- Default box -->
- <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Data Penerbangan</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-              <div>
-              	<a th:href="@{'/Penerbangan/Form'}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Tambahkan Penerbangan</a>
-              </div>
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Maskapai</th>
-                    <th>Asal</th>
-                    <th>Tujuan</th>
-                    <th>Tanggal Berangkat</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr th:each="ls : ${list}">
-                    <td th:text="${ls.id_pesawat}"></td>
-                    <td th:text="${ls.asal}"></td>
-                    <td th:text="${ls.tujuan}"></td>
-                    <td th:text="${ls.tanggal}"></td>
-                    <td>
-                    	<button type="button" class="btn btn-danger"><a th:href="@{'/Penerbangan/Delete/' + ${ls.id_penerbangan}}">Hapus </a></button>
-                    </td>
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
+    <div class="content">
+      <div class="container">
+        <form action="#" th:action="@{/Penerbangan/Form}" th:object="${penerbangan}" method="post">
+          <div class="form-row">
+				<div class="form-group col-md-4">
+			      <label for="Asal">Asal</label>
+			      <select id="Asal" class="form-control" th:field="*{asal}">
+			        <option th:value="Medan" selected>Medan (KNO) </option>
+			        <option th:value="Jakarta">Jakarta (CGK) </option>
+			        <option th:value="Bandung">Jakarta (HLP) </option>
+			        <option th:value="Surabaya">Surabaya </option>
+			      </select>
+			    </div>
+            	<div class="form-group col-md-4">
+			      <label for="Tujuan">Tujuan</label>
+			      <select id="Tujuan" class="form-control" th:field="*{tujuan}">
+			        <option th:value="Medan" selected>Medan (KNO) </option>
+			        <option th:value="Jakarta">Jakarta (CGK) </option>
+			        <option th:value="Bandung">Jakarta (HLP) </option>
+			        <option th:value="Surabaya">Surabaya </option>
+			      </select>
+			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="Pesawat">Pesawat</label>
+			      <select id="Pesawat" class="form-control" th:field="*{id_pesawat}">
+			        <option th:value="1" selected>Air Asia </option>
+			        <option th:value="2">Garuda  </option>
+			        <option th:value="3">Lion Air </option>
+			        <option th:value="4">CitiLink </option>
+			      </select>
+			    </div>
+            
           </div>
-        </div>
-      </div>
-    </section>
-    <!-- /.content -->
+          <div class="form-group">
+            <label for="tanggal">Tanggal Penerbangan</label>
+            <input type="datetime-local" class="form-control datetimepicker-input" id="inputAddress" placeholder="Tanggal Penerbangan" th:field="*{tanggal}">
+          </div>
+
+
+          <button type="submit" class="btn btn-primary">Tambah</button>
+        </form>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
   </div>
   <!-- /.content-wrapper -->
 

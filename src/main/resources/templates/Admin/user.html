@@ -184,7 +184,7 @@
                     </td>
                     <td th:text="${ls.roleid}"></td>
                     <td>
-                    	<button type="button" class="btn btn-danger" th:href="@{'/user/delete/' + ${ls.username}}">Hapus</button>
+                    	<button type="button" class="btn btn-danger"><a th:href="@{'User/Delete/' + ${ls.username}}"> Hapus </a> </button>
                     </td>
                   </tr>
                   </tfoot>

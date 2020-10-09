@@ -71,7 +71,6 @@ public class LoginController {
 		httpSession.removeAttribute("user");
 			return new RedirectView("login");
 		}
-	
 	@RequestMapping(value = "/login")
 	public ModelAndView Signin(@ModelAttribute User user, BindingResult bindingResult, HttpSession httpSession) {
 		User user1 = userRepository.findByUsername(user.getUsername());
@@ -86,7 +85,5 @@ public class LoginController {
 		}
 		return new ModelAndView("redirect:/");
 	}
-	
-
 
 }
