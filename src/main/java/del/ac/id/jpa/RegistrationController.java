@@ -1,7 +1,12 @@
 package del.ac.id.jpa;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import del.ac.id.jpa.model.Login;
+import del.ac.id.jpa.repository.LoginRepository;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,13 +21,17 @@ import del.ac.id.jpa.model.User;
 import del.ac.id.jpa.repository.RoleRepository;
 import del.ac.id.jpa.repository.UserRepository;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class RegistrationController {
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
-	public RegistrationController(UserRepository userRepository, RoleRepository roleRepository) {
+	private LoginRepository loginRepository;
+	public RegistrationController(UserRepository userRepository, RoleRepository roleRepository,LoginRepository loginRepository) {
 			this.userRepository = userRepository;
 			this.roleRepository = roleRepository;
+			this.loginRepository = loginRepository;
 	}
 
 	@GetMapping("/registration")
@@ -36,18 +45,22 @@ public class RegistrationController {
 	}
 
 	@RequestMapping(value="/registration", method = RequestMethod.POST)
-	public ModelAndView registrationSubmit(@ModelAttribute User user, BindingResult bindingResult, Model model) {
+	public ModelAndView registrationSubmit(@ModelAttribute User user, BindingResult bindingResult
+			, Model model, HttpSession session) {
 		if (bindingResult.hasErrors()) {
 			System.out.println("Error");
 		}
 
+		user.setRoleid(2);
 		model.addAttribute("user", user);
 		userRepository.save(user);
-		String role = "Admin/index";
-		if(user.getRoleid() == 2) {
-			role = "index";
+		String role = "/User";
+		if(user.getRoleid() != 2) {
+			//Tidak User
+			role = "/";
 		}
-		ModelAndView mv = new ModelAndView(role);
+		session.setAttribute("user",user);
+		ModelAndView mv = new ModelAndView("redirect:"+role);
 		mv.addObject("user", user);
 		return mv;
 	}
